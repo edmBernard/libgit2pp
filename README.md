@@ -1,6 +1,6 @@
 # libgit2pp
 
-C++ convenience wrappers for libgit2. libgit2pp is a single header file, git2pp.h,
+C++ convenience wrappers for libgit2. libgit2pp is a single header file, [git2pp.h](include/git2pp.h),
 to include in lieu of git2.h. Put it wherever suits your project.
 
 To keep the code base small and future-proof, the library uses metaprogramming
@@ -146,4 +146,24 @@ void show_commit(char const * branch) {
     std::cout << "author = " << commit[git_commit_author]()->name << "\n";
     std::cout << "message = " << commit[git_commit_message]() << "\n";
 }
+```
+
+## Examples
+
+There is some examples available [here](examples).
+We use [vcpkg](https://github.com/Microsoft/vcpkg) to install [libgit2](https://github.com/libgit2/libgit2) library
+
+```
+./vcpkg install libgit2
+```
+
+### Compile
+
+```bash
+mkdir build
+cd build
+# configure make with vcpkg toolchain
+cmake .. -DCMAKE_TOOLCHAIN_FILE=${VCPKG_DIR}/scripts/buildsystems/vcpkg.cmake
+# generate the examples executable
+make
 ```
