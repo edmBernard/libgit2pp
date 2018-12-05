@@ -1,6 +1,7 @@
 #include <git2pp.h>
 
 void git_status(std::string path) {
+    std::cout << "\nGIT STATUS" << std::endl;
 
     git2pp::Session git2;
     auto repo = git2[git_repository_open](path.c_str());  // Exception on failure.
@@ -9,6 +10,7 @@ void git_status(std::string path) {
     std::cout << "master = " << commit[git_commit_id]() << "\n";
     std::cout << "author = " << commit[git_commit_author]()->name << "\n";
     std::cout << "message = " << commit[git_commit_message]() << "\n";
+
 }
 
 void usage() {
